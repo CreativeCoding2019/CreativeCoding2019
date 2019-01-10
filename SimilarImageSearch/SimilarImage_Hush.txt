@@ -1,0 +1,28 @@
+from PIL import Image,ImageFile
+import numpy as np
+import imagehash,os
+from glob import glob
+
+#サイズの大きな画像をスキップしない
+ImageFile.LOAD_TRUNCATED_IMAGES = True
+
+#2つの画像のハッシュ値の差分を出力
+def d_hash(img,otherimg):
+    hash = imagehash.phash(Image.open(img))
+    other_hash = imagehash.phash(Image.open(otherimg))
+    print(hash)
+    print(other_hash)
+    return hash-other_hash
+
+#file open
+img1 = 'C:\\test\\image\\19.png'
+img2 = 'C:\\test\\image\\18.png'
+
+dif = d_hash(img1,img2)
+print(dif)
+
+#hash = imagehash.phash(img)
+#hash2 = imagehash.phash(img2)
+
+display(img)
+display(img2)
