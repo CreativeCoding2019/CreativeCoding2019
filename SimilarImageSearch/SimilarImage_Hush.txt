@@ -3,10 +3,10 @@ import numpy as np
 import imagehash,os
 from glob import glob
 
-#ƒTƒCƒY‚Ì‘å‚«‚È‰æ‘œ‚ğƒXƒLƒbƒv‚µ‚È‚¢
+#ã‚µã‚¤ã‚ºã®å¤§ããªç”»åƒã‚’ã‚¹ã‚­ãƒƒãƒ—ã—ãªã„
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
-#2‚Â‚Ì‰æ‘œ‚ÌƒnƒbƒVƒ…’l‚Ì·•ª‚ğo—Í
+#2ã¤ã®ç”»åƒã®ãƒãƒƒã‚·ãƒ¥å€¤ã®å·®åˆ†ã‚’å‡ºåŠ›
 def d_hash(img,otherimg):
     hash = imagehash.phash(Image.open(img))
     other_hash = imagehash.phash(Image.open(otherimg))
@@ -15,8 +15,8 @@ def d_hash(img,otherimg):
     return hash-other_hash
 
 #file open
-img1 = 'C:\\test\\image\\19.png'
-img2 = 'C:\\test\\image\\18.png'
+img1 = 'C:Â¥Â¥testÂ¥Â¥imageÂ¥Â¥19.png'
+img2 = 'C:Â¥Â¥testÂ¥Â¥imageÂ¥Â¥18.png'
 
 dif = d_hash(img1,img2)
 print(dif)
