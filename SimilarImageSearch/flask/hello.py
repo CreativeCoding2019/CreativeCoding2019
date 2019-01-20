@@ -36,6 +36,10 @@ def upload():
         # 変換
         img = canny(img)
 
+
+        # 検索
+        
+
         # 保存
         dt_now = datetime.now().strftime("%Y_%m_%d%_H_%M_%S_") + random_str(5)
         save_path = os.path.join(SAVE_DIR, dt_now + ".png")
@@ -47,7 +51,7 @@ def upload():
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host='0.0.0.0', port=8888)
+    app.run(host='127.0.0.1', port=8000)
 
 # # https://qiita.com/ynakayama/items/2cc0b1d3cf1a2da612e4
 # # Flask などの必要なライブラリをインポートする
