@@ -1,0 +1,311 @@
+{
+  "children": [
+    {
+      "costumes": [
+        {
+          "baseLayerID": 1,
+          "baseLayerMD5": "92e30b1cbb968f8ec8405f4ad7cdf8f1.png",
+          "bitmapResolution": 1,
+          "costumeName": "costume1",
+          "rotationCenterX": 47,
+          "rotationCenterY": 55
+        },
+        {
+          "baseLayerID": 2,
+          "baseLayerMD5": "ed77b922dfdc9a5bad1520137a598fff.png",
+          "bitmapResolution": 1,
+          "costumeName": "costume2",
+          "rotationCenterX": 47,
+          "rotationCenterY": 55
+        },
+        {
+          "baseLayerID": 3,
+          "baseLayerMD5": "6b827f51e9c731693f26e20e8556f70d.png",
+          "bitmapResolution": 1,
+          "costumeName": "wizard1",
+          "rotationCenterX": 90,
+          "rotationCenterY": 62
+        },
+        {
+          "baseLayerID": 4,
+          "baseLayerMD5": "12765ab74b4a889f17c853dd0ac62ef9.png",
+          "bitmapResolution": 1,
+          "costumeName": "gobo3",
+          "rotationCenterX": 52,
+          "rotationCenterY": 60
+        }
+      ],
+      "currentCostumeIndex": 3,
+      "direction": 90.0,
+      "indexInLibrary": 1,
+      "isDraggable": false,
+      "lists": [],
+      "objName": "Sprite1",
+      "rotationStyle": "normal",
+      "scale": 1.0,
+      "scratchX": 0,
+      "scratchY": 0,
+      "scriptComments": [],
+      "scripts": [
+        [
+          99,
+          42.0,
+          [
+            [
+              "whenGreenFlag"
+            ],
+            [
+              "lookLike:",
+              "costume1"
+            ],
+            [
+              "playSound:",
+              "meow"
+            ],
+            [
+              "glideSecs:toX:y:elapsed:from:",
+              1,
+              57,
+              -52
+            ],
+            [
+              "wait:elapsed:from:",
+              1
+            ],
+            [
+              "glideSecs:toX:y:elapsed:from:",
+              4,
+              169,
+              -48
+            ],
+            [
+              "wait:elapsed:from:",
+              1
+            ],
+            [
+              "lookLike:",
+              "gobo3"
+            ],
+            [
+              "wait:elapsed:from:",
+              1
+            ],
+            [
+              "playSound:",
+              "xylo4"
+            ]
+          ]
+        ],
+        [
+          77,
+          457.0,
+          [
+            [
+              "doWaitUntil",
+              false
+            ]
+          ]
+        ]
+      ],
+      "sounds": [
+        {
+          "format": "",
+          "md5": "83c36d806dc92327b9e7049a565c6bff.wav",
+          "rate": 22050,
+          "sampleCount": 18688,
+          "soundID": 1,
+          "soundName": "meow"
+        },
+        {
+          "format": "",
+          "md5": "e6404c6c17f948f93d737aa63ed8c18f.wav",
+          "rate": 22050,
+          "sampleCount": 0,
+          "soundID": 2,
+          "soundName": "xylo4"
+        }
+      ],
+      "spriteInfo": {},
+      "variables": [],
+      "visible": true
+    },
+    {
+      "costumes": [
+        {
+          "baseLayerID": 5,
+          "baseLayerMD5": "b373b55dc13711bd09fd42757fdc6398.png",
+          "bitmapResolution": 1,
+          "costumeName": "dog2-c",
+          "rotationCenterX": 89,
+          "rotationCenterY": 62
+        },
+        {
+          "baseLayerID": 6,
+          "baseLayerMD5": "6b827f51e9c731693f26e20e8556f70d.png",
+          "bitmapResolution": 1,
+          "costumeName": "wizard1",
+          "rotationCenterX": 90,
+          "rotationCenterY": 62
+        }
+      ],
+      "currentCostumeIndex": 1,
+      "direction": 90.0,
+      "indexInLibrary": 2,
+      "isDraggable": false,
+      "lists": [],
+      "objName": "Sprite2",
+      "rotationStyle": "normal",
+      "scale": 1.0,
+      "scratchX": 0,
+      "scratchY": 0,
+      "scriptComments": [],
+      "scripts": [
+        [
+          75,
+          80.0,
+          [
+            [
+              "whenGreenFlag"
+            ],
+            [
+              "lookLike:",
+              "dog2-c"
+            ],
+            [
+              "glideSecs:toX:y:elapsed:from:",
+              1,
+              -130,
+              -48
+            ],
+            [
+              "wait:elapsed:from:",
+              1
+            ],
+            [
+              "glideSecs:toX:y:elapsed:from:",
+              2,
+              -29,
+              -58
+            ],
+            [
+              "wait:elapsed:from:",
+              2
+            ],
+            [
+              "lookLike:",
+              "wizard1"
+            ]
+          ]
+        ],
+        [
+          56,
+          314.0,
+          [
+            [
+              "whenGreenFlag"
+            ],
+            [
+              "playSound:",
+              "Techno"
+            ]
+          ]
+        ]
+      ],
+      "sounds": [
+        {
+          "format": "",
+          "md5": "e6404c6c17f948f93d737aa63ed8c18f.wav",
+          "rate": 22050,
+          "sampleCount": 0,
+          "soundID": 3,
+          "soundName": "Techno"
+        }
+      ],
+      "spriteInfo": {},
+      "variables": [],
+      "visible": true
+    },
+    {
+      "costumes": [
+        {
+          "baseLayerID": 7,
+          "baseLayerMD5": "132fe0f2b6233fa807f121582f6d26f4.jpg",
+          "bitmapResolution": 1,
+          "costumeName": "costume1",
+          "rotationCenterX": 240,
+          "rotationCenterY": 172
+        }
+      ],
+      "currentCostumeIndex": 0,
+      "direction": 90.0,
+      "indexInLibrary": 3,
+      "isDraggable": false,
+      "lists": [],
+      "objName": "Sprite3",
+      "rotationStyle": "normal",
+      "scale": 1.0,
+      "scratchX": 0,
+      "scratchY": 0,
+      "scriptComments": [],
+      "scripts": [
+        [
+          78,
+          41.0,
+          [
+            [
+              "whenGreenFlag"
+            ],
+            [
+              "goBackByLayers:",
+              3
+            ]
+          ]
+        ]
+      ],
+      "sounds": [],
+      "spriteInfo": {},
+      "variables": [],
+      "visible": true
+    }
+  ],
+  "costumes": [
+    {
+      "baseLayerID": 0,
+      "baseLayerMD5": "1db4812ba9e5c9b0c3561df1a661b84e.png",
+      "bitmapResolution": 1,
+      "costumeName": "background1",
+      "rotationCenterX": 240,
+      "rotationCenterY": 180
+    }
+  ],
+  "currentCostumeIndex": 0,
+  "info": {
+    "author": "070362",
+    "comment": "I like this program!",
+    "flashVersion": "",
+    "hasCloudData": false,
+    "projectID": "",
+    "scriptCount": 5,
+    "spriteCount": 3,
+    "userAgent": "",
+    "videoOn": false
+  },
+  "lists": [],
+  "objName": "Stage",
+  "penLayerMD5": "279467d0d49e152706ed66539b577c00.png",
+  "scriptComments": [],
+  "scripts": [],
+  "sounds": [
+    {
+      "format": "",
+      "md5": "83a9787d4cb6f3b7632b4ddfebf74367.wav",
+      "rate": 11025,
+      "sampleCount": 258,
+      "soundID": 0,
+      "soundName": "pop"
+    }
+  ],
+  "tempoBPM": 60,
+  "variables": [],
+  "videoAlpha": 0.5
+}

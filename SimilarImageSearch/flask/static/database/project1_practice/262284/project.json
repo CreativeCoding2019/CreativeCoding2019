@@ -1,0 +1,114 @@
+{
+  "children": [
+    {
+      "costumes": [
+        {
+          "baseLayerID": 1,
+          "baseLayerMD5": "92e30b1cbb968f8ec8405f4ad7cdf8f1.png",
+          "bitmapResolution": 1,
+          "costumeName": "costume1",
+          "rotationCenterX": 47,
+          "rotationCenterY": 55
+        },
+        {
+          "baseLayerID": 2,
+          "baseLayerMD5": "ed77b922dfdc9a5bad1520137a598fff.png",
+          "bitmapResolution": 1,
+          "costumeName": "costume2",
+          "rotationCenterX": 47,
+          "rotationCenterY": 55
+        }
+      ],
+      "currentCostumeIndex": 0,
+      "direction": 90.0,
+      "indexInLibrary": 1,
+      "isDraggable": false,
+      "lists": [],
+      "objName": "Sprite1",
+      "rotationStyle": "normal",
+      "scale": 1.0,
+      "scratchX": 0,
+      "scratchY": 0,
+      "scriptComments": [],
+      "scripts": [
+        [
+          91,
+          40.0,
+          [
+            [
+              "whenGreenFlag"
+            ],
+            [
+              "say:duration:elapsed:from:",
+              "Really, the name ACTULLY worked?",
+              2
+            ],
+            [
+              "say:duration:elapsed:from:",
+              "Omg! _-_-_-_-_-_-_- works???",
+              2
+            ],
+            [
+              "say:duration:elapsed:from:",
+              "O_O",
+              2
+            ]
+          ]
+        ]
+      ],
+      "sounds": [
+        {
+          "format": "",
+          "md5": "83c36d806dc92327b9e7049a565c6bff.wav",
+          "rate": 22050,
+          "sampleCount": 18688,
+          "soundID": 1,
+          "soundName": "meow"
+        }
+      ],
+      "spriteInfo": {},
+      "variables": [],
+      "visible": true
+    }
+  ],
+  "costumes": [
+    {
+      "baseLayerID": 0,
+      "baseLayerMD5": "1db4812ba9e5c9b0c3561df1a661b84e.png",
+      "bitmapResolution": 1,
+      "costumeName": "background1",
+      "rotationCenterX": 240,
+      "rotationCenterY": 180
+    }
+  ],
+  "currentCostumeIndex": 0,
+  "info": {
+    "author": "_-_-_-_-_-_-_-",
+    "comment": "",
+    "flashVersion": "",
+    "hasCloudData": false,
+    "projectID": "",
+    "scriptCount": 1,
+    "spriteCount": 1,
+    "userAgent": "",
+    "videoOn": false
+  },
+  "lists": [],
+  "objName": "Stage",
+  "penLayerMD5": "279467d0d49e152706ed66539b577c00.png",
+  "scriptComments": [],
+  "scripts": [],
+  "sounds": [
+    {
+      "format": "",
+      "md5": "83a9787d4cb6f3b7632b4ddfebf74367.wav",
+      "rate": 11025,
+      "sampleCount": 258,
+      "soundID": 0,
+      "soundName": "pop"
+    }
+  ],
+  "tempoBPM": 60,
+  "variables": [],
+  "videoAlpha": 0.5
+}

@@ -1,0 +1,54 @@
+/*
+*{
+	margin: 0;
+	padding: 0;
+}*/
+
+#contents-wrapper {
+	margin: 20px auto;
+	padding: 3%;
+}
+
+#leftColumn {
+	/*background-color: yellow;*/
+	width: 15%;
+	float: left;
+}
+
+#centerColumn {
+	background-color: "#eaeaea";
+	width: 650px;
+	float: left;
+	/*margin: 0 5%;*/
+	margin: 0;
+}
+
+#rightColumn {
+	/*background-color: blue;*/
+	width: 30%;
+	float: right;
+}
+
+footer {
+	clear: both;
+}
+
+
+#searchedResults {
+	/*grid layout by fixing width*/
+	width: 650px;
+}
+
+li {
+	margin: 5px;
+	float: left;
+	list-style: none;
+}
+
+#usersCodeJSON {
+	font-size: 10%;
+}
+
+/*ul {
+	list-style: none;
+}*/

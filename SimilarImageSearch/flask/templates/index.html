@@ -1,19 +1,144 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<form action="/upload" method="post" enctype="multipart/form-data">
-  <input type="file" name="image" accept="image/png, image/jpeg">
-  <button type="submit">submit</button>
-</form>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}">
 
-{% if images %}
-  {% for path in images %}
-    <div>
-      <img src="images/{{ path }}" style="margin-top: 10px; vertical-align: bottom; width: 200px;">
-      {{ path }}
-    </div>
-  {% endfor %}
-{% endif %}
+
+<script type=text/javascript>
+	var searchedImgUrl = "defaultURL";
+
+	// input画像が選択されてない時の例外処理
+	$('#sendInputImg').submit(function(e){
+		console.log("aaaa");
+
+		var count = $('#inputImg').val().length;
+		if( !count ){
+			console.log("Submit has cancelled");
+			return false;
+		}
+	})
+
+
+	// 検索結果画像クリックでコードJSON表示
+	$(function() {
+		$('#searchedImgList li').click(function() {
+			var searchedImgUrl = $(this).children('img').attr('src');
+			$.ajax({
+				url: '/search',
+				data: JSON.stringify({"searchedImgUrl": searchedImgUrl}),
+				contentType: 'application/json;charset=UTF-8',
+				type: 'POST'
+			}).done(function(data){
+				document.getElementById("usersCodeJSON").innerHTML = data;
+				// ChangeTxt(data);
+				// console.log(data);
+			}).fail(function(){
+				console.log('failed');
+
+			});
+		});
+	});
+	// 検索結果画像をクリックしてJSONを表示
+	// function ChangeTxt(_text) {
+	// 	document.getElementById("usersCodeJSON").innerHTML = _text;
+	//}
+
+	// input画像を'search'ボタンクリックの前にプレビュー表示するための処理
+	// https://qiita.com/kon_yu/items/f98df7ac826e7c36cc6c
+	$(function(){
+  		//画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
+  		$('form').on('change', 'input[type="file"]', function(e) {
+	  		var file = e.target.files[0],
+	        reader = new FileReader(),
+	        $preview = $(".preview");
+	        t = this;
+	    	console.log(file);
+
+		    // ファイル読み込みが完了した際のイベント登録
+		    reader.onload = (function(file) {
+		    	return function(e) {
+		    	//既存のプレビューを削除
+		        $preview.empty();
+		        // .prevewの領域の中にロードした画像を表示するimageタグを追加
+		        $preview.append($('<img>').attr({
+		             src: e.target.result,
+		             height: "150px",
+		             class: "preview",
+		             title: file.name
+		        	}));
+		    	};
+	    	})(file);
+			reader.readAsDataURL(file);
+  		});
+	});
+
+
+</script>
+
+
+
+<!--
+-----------------------------------------------------------
+BODY
+-----------------------------------------------------------
+-->
+<div id="contents-wrapper">
+
+
+<div id="leftColumn">
+	<div id="leftTop">
+		<form action="/upload" id="sendInputImg" method="post" enctype="multipart/form-data">
+			{% if inputImgUrl %}
+			<div class="preview">
+				<img src={{ url_for('static', filename = inputImgUrl) }} width="150">
+			</div>
+			{% endif %}
+			<div>
+				<input type="file" id="inputImg" name="inputImg" accept="image/png, image/jpeg, image/jpg, image/gif">
+			</div>
+			<div>
+				<button type="submit">search</button>
+			</div>
+		</form>
+
+	</div><!-- leftTop -->
+	<div id="leftBottom">
+		[TODO] User's current code ???
+	</div><!-- leftBottom -->
+
+</div><!-- leftColumn -->
+
+
+<div id="centerColumn">
+	<div id="searchedResults">
+		{% if imgList %}
+		<!-- https://m-school.biz/dev/css-coding/036-css-list-grid.htm -->
+		<ul id="searchedImgList">
+			{% for path in imgList %}
+			<li>
+				<img src={{ url_for('static', filename = path) }} id = "searchedImg" style="margin-top: 10px; vertical-align: bottom; width: 100px;">
+			</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</div><!-- searchedResults -->
+</div><!-- centerColumn -->
+
+
+<div id="rightColumn">
+	<div id="clicekedImgJSON">
+		Other user's scratch code !!
+		<div id="usersCodeJSON"></div>
+	</div><!-- clicekedImgJSON -->
+</div><!-- rightColumn -->
+
+<footer>
+</footer>
+
+</div><!-- contents-wrapper -->
+
+
 
 {% endblock %}
 
