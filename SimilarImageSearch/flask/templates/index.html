@@ -74,6 +74,8 @@
 	});
 
 
+
+
 </script>
 
 
@@ -98,13 +100,13 @@ BODY
 				<input type="file" id="inputImg" name="inputImg" accept="image/png, image/jpeg, image/jpg, image/gif">
 			</div>
 			<div>
-				<button type="submit">search</button>
+				<button type="submit">Search</button>
 			</div>
 		</form>
 
 	</div><!-- leftTop -->
 	<div id="leftBottom">
-		[TODO] User's current code ???
+		[TODO] User's current code???
 	</div><!-- leftBottom -->
 
 </div><!-- leftColumn -->
@@ -114,6 +116,13 @@ BODY
 	<div id="searchedResults">
 		{% if imgList %}
 		<!-- https://m-school.biz/dev/css-coding/036-css-list-grid.htm -->
+		<!-- <ul id="searchedImgList">
+			{% for path in imgList %}
+			<li>
+				<img src={{ url_for('static', filename = path) }} id = "searchedImg" style="margin-top: 10px; vertical-align: bottom; width: 100px;">
+			</li>
+			{% endfor %}
+		</ul> -->
 		<ul id="searchedImgList">
 			{% for path in imgList %}
 			<li>
@@ -121,6 +130,7 @@ BODY
 			</li>
 			{% endfor %}
 		</ul>
+
 		{% endif %}
 	</div><!-- searchedResults -->
 </div><!-- centerColumn -->
@@ -128,7 +138,7 @@ BODY
 
 <div id="rightColumn">
 	<div id="clicekedImgJSON">
-		Other user's scratch code !!
+		Other user's scratch code!!
 		<div id="usersCodeJSON"></div>
 	</div><!-- clicekedImgJSON -->
 </div><!-- rightColumn -->

@@ -1,7 +1,7 @@
 # Scratch類似画像検索 [GUI版]
 - 2019.01.22
 - Python v3.7.2
-- PythonでのWebアプリ作成用のフレームワークFlaskを使用.
+- PythonでのWebアプリ作成用のフレームワークflaskを使用.
 - 動作確認済みブラウザ Google Chrome Version 71.0.3578.98 (Official Build) (64-bit)
 - OS macOSX 10.14
 
@@ -21,8 +21,8 @@
 	- app.py                       : サーバ側のメイン処理1。クライアントとの通信など
 	- SearchSimilarImage.py        : サーバ側のメイン処理2。類似画像検索の具体的な処理
 	- **templates**
-		- index.html               : ボタンなど. JavaScript, Ajax, JQueryもごちゃまぜに入っている(Webのつぎはぎなので...)
-		- layout.html              : タイトルとか<head>とか
+		- index.html               : ボタンなど。JavaScript, Ajax, JQueryもごちゃまぜに入っている(Webのつぎはぎなので...)
+		- layout.html              : タイトルとかheadとか
 	- **static**
 		- **css**
 			- style.cssとdummy.png  : dummy.pngは最初の読み込み時にinput画像の代わりに表示する画像。 のちにD&D実装するのでなくなる
@@ -33,8 +33,8 @@
 				- sortedImgList.csv : input画像hash値とデータベース画像hash値の差分を降順にソートしたリスト。searchボタン押下時に毎回作成される。時間かかる。
 			- **project1**             : 検索対象の画像たち
 			- ...
-		- **uploads**                  : inputとしてアップロードされた画像たち 念のため保存してるだけで、index.html読み込み時に前回のものは毎回削除される
-			- *.pngとか*.jpgとか
+		- **uploads**                  : inputとしてアップロードされた画像たち。念のため保存してるだけで、index.html読み込み時に前回のものは毎回削除される
+			- .pngとか.jpgとか
 # TODO
 - 段階的な検索結果表示(莫大なデータ数への対応)
 - pathHashList.csvを作るときと作らない時の処理(データベースファイルに変更があった時のみ変更があったファイルのみに対してhashを計算するようにしないと、時間かかって大変)。
