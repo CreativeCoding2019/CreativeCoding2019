@@ -10,12 +10,14 @@
 1. [GitHub](https://github.com/CreativeCoding2019/CreativeCoding2019)からリポジトリをクローンまたはzipでダウンロードするなどして、ワーキングディレクトリの構成を後述のディレクトリ構成にする
 2. シェル(ターミナル.appとか)でワーキングディレクトリの中のflaskディレクトリの中に移動する</br>
 (例) `$ cd ~/WorkSpace/CreativeCoding2019/SimilarImageSearch/flask `
-3. app.pyを実行する→ローカルサーバが起動する</br>
+3. `PROCESS_NUM`を試したいアルゴリズムに合わせて変える<br>
+`PROCESS_NUM = 0 # 試す検索処理の場合分け [0でhash,1でhistogram,2でfeature]`
+4. app.pyを実行する→ローカルサーバが起動する</br>
    `$ python app.py`
-4. ブラウザで `http://127.0.0.1:8000`にアクセスする
-5. Choose Fileボタンからinput画像を選んでsearchボタンを押すと、画面中央に検索結果が表示される
-6. 各画像をクリックすると、「画像が使用されたプロジェクトIDのコードを示すJSON」が画面左側に表示される
-7. 「Show more ...」ボタンをクリックすると、複数枚ずつ画像が追加される
+5. ブラウザで `http://127.0.0.1:8000`にアクセスする
+6. Choose Fileボタンからinput画像を選んでsearchボタンを押すと、画面中央に検索結果が表示される
+7. 各画像をクリックすると、「画像が使用されたプロジェクトIDのコードを示すJSON」が画面左側に表示される
+8. 「Show more ...」ボタンをクリックすると、複数枚ずつ画像が追加される
 
 
 # ディレクトリ構成

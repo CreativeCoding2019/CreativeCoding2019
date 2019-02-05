@@ -40,7 +40,7 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'gif', 'PNG', 'JPG', 'JPEG', 'GIF'])
 UPLOAD_FOLDER = 'static/uploads'
 
 # for prototype
-PROCESS_NUM = 2 # 試す検索処理の場合分け
+PROCESS_NUM = 0 # 試す検索処理の場合分け [0でhash,1でhistogram,2でfeature]
 
 # ---------------------------------
 # 謎 とりあえずおまじない
