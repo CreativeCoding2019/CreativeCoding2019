@@ -3,6 +3,11 @@
 	margin: 0;
 	padding: 0;
 }*/
+#searchedImg{
+	margin-top: 10px;
+	vertical-align: bottom;
+	width: 100px;
+}
 
 #contents-wrapper {
 	margin: 20px auto;

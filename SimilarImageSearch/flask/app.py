@@ -1,3 +1,11 @@
+# <!-- https://m-school.biz/dev/css-coding/036-css-list-grid.htm -->
+# 		<!-- <ul id="searchedImgList">
+# 			{% for path in imgList %}
+# 			<li>
+# 				<img src={{ url_for('static', filename = path) }} id = "searchedImg" style="margin-top: 10px; vertical-align: bottom; width: 100px;">
+# 			</li>
+# 			{% endfor %}
+# 		</ul> -->
 # 2019.01.22
 # Scratch類似画像検索GUI化.
 # Python v3.7.2
@@ -15,16 +23,16 @@ import time
 
 import SSI_preprocess as ps
 import SSI_hash as ha
-import SSI_hist as hi
+import SSI_histogram as hi
 import SSI_featureDetection as fd
 
 # ---------------------------------
 # グローバル変数とか
 # ---------------------------------
 # 練習用に検索対象ディレクトリ変えるときはここ
-databaseImagesPath = "static/database/project1_practice/"
+# databaseImagesPath = "static/database/project1_practice/"
 # databaseImagesPath = "static/database/_practice/"
-# databaseImagesPath = "static/database/project1/"
+databaseImagesPath = "static/database/project1/"
 
 imgList = ""
 imgUrl = "css/dummy.png" # 最初の読み込み時はダミー画像を表示する
@@ -32,7 +40,7 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'gif', 'PNG', 'JPG', 'JPEG', 'GIF'])
 UPLOAD_FOLDER = 'static/uploads'
 
 # for prototype
-PROCESS_NUM = 0 # 試す検索処理の場合分け
+PROCESS_NUM = 2 # 試す検索処理の場合分け
 
 # ---------------------------------
 # 謎 とりあえずおまじない
@@ -58,11 +66,11 @@ def index():
 			ha.CalcDBImg_hash(databaseImagesPath)
 
 	elif PROCESS_NUM is 1:
-		print("================ Start [Histgram Method] ================")
+		print("================ Start [Histogram Method] ================")
 
-		if not os.path.exists("static/database/lists/comparing_hist_list.npy"):
-			print(" Calculating histgram values of images in database ...")
-			hi.CalcDBImg_hist(databaseImagesPath)
+		if not os.path.exists("static/database/lists/comparing_histogram_list.npy"):
+			print(" Calculating histogram values of images in database ...")
+			hi.CalcDBImg_histogram(databaseImagesPath)
 
 
 	elif PROCESS_NUM is 2:
@@ -72,7 +80,7 @@ def index():
 			fd.CalcDBImg_feature(databaseImagesPath)
 
 	e_time = time.time() - start
-	print (" time:{0}".format(e_time) + "[s]")
+	print (" time: {0}".format(e_time) + " [s]")
 
 	print(" End Preprocess ...")
 	return render_template('index.html', inputImgUrl = imgUrl, imgList = imgList)
@@ -101,6 +109,8 @@ def search():
 @app.route('/upload', methods=['POST'])
 def upload():
 	# print(os.getcwd())
+	start = time.time()
+
 	if request.method == 'POST':
 		# 例外処理1
 		if 'inputImg' not in request.files:
@@ -119,9 +129,13 @@ def upload():
 		if inputImg and allowed_file(inputImg.filename):
 
 			# 一時的にinput画像をサーバに保存
+			ps.DeletePreviousData()
 			filename = secure_filename(inputImg.filename)
 			inputImg.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 			imgUrl = UPLOAD_FOLDER + "/" + filename
+
+			sortedImgList = [];
+			# sortedImgList = pd.DataFrame([]);
 
 			###############################
 			# 類似画像検索を実施
@@ -132,8 +146,7 @@ def upload():
 
 			elif PROCESS_NUM is 1:
 				# ヒストグラム法
-				# sortedImgList = hm.histMatching(imgUrl, databaseImagesPath)
-				sortedImgList = hi.CalcDef_hist(imgUrl)
+				sortedImgList = hi.CalcDef_histogram(imgUrl)
 
 				# print(sortedImgList) # database/_practice/headphone_image_0021.jpg
 
@@ -148,11 +161,15 @@ def upload():
 			# (index.html内で画像url指定してるところで、「"static"ディレクトリ内の」という指定の仕方を
 			# してるので、パスに"static/"を入れる必要はないっぽい)
 			imgUrl = imgUrl.strip("static/")
-			imgList = sortedImgList.iloc[:,0].tolist()
+			imgList = sortedImgList[0].tolist()
+			# imgList = sortedImgList.iloc[:,0].tolist()
 			# print(imgList)
 
-			print("============================================================")
+			e_time = time.time() - start
+			print (" time: {0}".format(e_time) + " [s]")
+			print(" " + str(len(imgList)) + " files are listed.")
 
+			print("=====================================================")
 
 			return render_template('index.html', inputImgUrl = imgUrl, imgList = imgList)
 

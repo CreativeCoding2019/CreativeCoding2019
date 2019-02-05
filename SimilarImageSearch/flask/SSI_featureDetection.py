@@ -11,7 +11,6 @@ import SSI_preprocess as ps
 
 
 
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'gif', 'PNG', 'JPG', 'JPEG', 'GIF'])
 # setting
 img_size = (200, 200)
 bf = cv2.BFMatcher(cv2.NORM_HAMMING)
@@ -105,7 +104,7 @@ def CalcDef_feature(target_img_url):
     # print(dif)
 
     # sort
-    for k, v in sorted(dif.items(), reverse=True, key=lambda x: x[1]):
+    for k, v in sorted(dif.items(), reverse=False, key=lambda x: x[1]):
         k = k.strip("static/") # ssiクラスでの返り値に揃えます...
         sortedImgList = sortedImgList.append([k],[v]) # kを0列目、vを1列目にappendしていく(テキトーに書いたのに...)
     return sortedImgList

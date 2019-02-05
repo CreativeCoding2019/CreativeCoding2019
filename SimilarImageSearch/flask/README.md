@@ -1,5 +1,5 @@
 # Scratch類似画像検索 [GUI版]
-- 2019.01.22
+- 2019.02.05
 - Python v3.7.2
 - PythonでのWebアプリ作成用のフレームワークflaskを使用.
 - 動作確認済みブラウザ Google Chrome Version 71.0.3578.98 (Official Build) (64-bit)
@@ -15,11 +15,15 @@
 4. ブラウザで `http://127.0.0.1:8000`にアクセスする
 5. Choose Fileボタンからinput画像を選んでsearchボタンを押すと、画面中央に検索結果が表示される
 6. 各画像をクリックすると、「画像が使用されたプロジェクトIDのコードを示すJSON」が画面左側に表示される
+7. 「Show more ...」ボタンをクリックすると、複数枚ずつ画像が追加される
+
 
 # ディレクトリ構成
 - **flask**
-	- app.py                       : サーバ側のメイン処理1。クライアントとの通信など
-	- SearchSimilarImage.py        : サーバ側のメイン処理2。類似画像検索の具体的な処理
+	- app.py                       : サーバ側のメイン処理0。クライアントとの通信など
+	- SSI_hash.py                  : サーバ側のメイン処理1。ハッシュ値による類似画像検索
+	- SSI_histogram.py             : サーバ側のメイン処理2。カラーヒストグラムによる類似画像検索
+	- SSI_featureDetection.py      : サーバ側のメイン処理3。特徴点検出による類似画像検索
 	- **templates**
 		- index.html               : ボタンなど。JavaScript, Ajax, JQueryもごちゃまぜに入っている(Webのつぎはぎなので...)
 		- layout.html              : タイトルとかheadとか
@@ -27,16 +31,15 @@
 		- **css**
 			- style.cssとdummy.png  : dummy.pngは最初の読み込み時にinput画像の代わりに表示する画像。 のちにD&D実装するのでなくなる
 		- **database**
-			- **lists**                : 類似画像検索結果を保存しているcsvたち
-				- inputImgHash.csv : input画像のパスとhash値のリスト(といっても2行1列しかない)。input画像がサーバにsubmitされたときに作成される。軽い
-				- pathHashList.csv : データベース内にある画像ファイルのパスとhash値のリスト。index.html読み込み時にこの名前のファイルがなければ作成され(数分かかる)、あればそのまま使う
-				- sortedImgList.csv : input画像hash値とデータベース画像hash値の差分を降順にソートしたリスト。searchボタン押下時に毎回作成される。時間かかる。
+			- **lists**                : 類似画像検索に使うデータベース上の画像の情報を保存しているファイルたち
+				- comparing_hash_list.npy
+				- comparing_histogram_list.npy
+				- comparing_feature_list.npy
 			- **project1**             : 検索対象の画像たち
 			- ...
 		- **uploads**                  : inputとしてアップロードされた画像たち。念のため保存してるだけで、index.html読み込み時に前回のものは毎回削除される
 			- .pngとか.jpgとか
 # TODO
-- 段階的な検索結果表示(莫大なデータ数への対応)
-- pathHashList.csvを作るときと作らない時の処理(データベースファイルに変更があった時のみ変更があったファイルのみに対してhashを計算するようにしないと、時間かかって大変)。
+- .npyを作るときと作らない時の処理(データベースファイルに変更があった時のみ変更があったファイルのみに対してhashを計算するようにしないと、時間かかって大変)。
 - JSON表示をスクラッチ用に整形。
 

@@ -86,7 +86,6 @@ def CalcDef_hash(target_img_url):
 	# sortedImgList = pd.DataFrame(sortedDic)
 	# sortedImgList.to_csv("static/database/lists/sortedImgList.csv", index=False, header=False)
 	# print("> sortedImgList.csv is created.")
-
 	return sortedImgList
 
 

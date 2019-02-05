@@ -1,5 +1,6 @@
 import os
 import shutil
+from glob import glob
 
 # ---------------------------------
 # 前回のアップロード画像等を削除し、必要なディレクトリを作成
@@ -17,16 +18,19 @@ def DeletePreviousData():
 def getImageFilesFromDir(dbImg_path):
     ALLOWED_EXTENSIONS = set(['png', 'jpg', 'gif', 'PNG', 'JPG', 'JPEG', 'GIF'])
     comparing_files = []
-    comparing_filesList = [glob.glob(dbImg_path + "/*/*." + ext) for ext in ALLOWED_EXTENSIONS]
+    # comparing_filesList = [glob(dbImg_path + "/*." + ext) for ext in ALLOWED_EXTENSIONS]
+    comparing_filesList = [glob(dbImg_path + "/*/*." + ext) for ext in ALLOWED_EXTENSIONS]
+    # comparing_filesList = [glob.glob(dbImg_path + "/*/*." + ext) for ext in ALLOWED_EXTENSIONS]
     for s in comparing_filesList:
         comparing_files.extend(s)
     # print("Comparing Files ...")
     # print(comparing_files)
 
     if len(comparing_files) == 0:
-        logging.error('no files.')
-        sys.exit(1)
-
+        print('no files.')
+        # sys.exit(1)
+    # print(comparing_files)
+    # print("LLLLLL")
     return comparing_files
 
 
